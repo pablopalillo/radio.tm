@@ -57,7 +57,7 @@ select
 	line-height: 1;
 }
 
-#main-content-home #en-vivo 
+#main-content-home a #en-vivo 
 {
 	background: url(images/banner-telemedellin-radio.jpg) no-repeat;
 	height: 250px;
@@ -639,7 +639,7 @@ h2.resp-tab-active {
 }
 @media only screen and (max-width: 768px) {
 
-	#main-content-home #en-vivo 
+	#main-content-home a #en-vivo 
 	{
 		background: url(images/banner-telemedellin-radio-movil.jpg) no-repeat;
 		height:600px;

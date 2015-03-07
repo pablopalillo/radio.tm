@@ -23,11 +23,13 @@ if(is_category())
 <?php get_header(); ?>
 <div class="col-sm-9 col-xs-12 inner-category">
 	<div id="main-content-home">
-		<div id="en-vivo">
-			<a href="<?php bloginfo('template_url') ?>/en-vivo" >
-			<!-- <img src="<?php bloginfo('template_url') ?>/images/banner-telemedellin-radio.jpg" > -->
-			</a>
-		</div>
+		<a  href="<?php bloginfo('template_url') ?>/en-vivo" >
+			<div id="en-vivo">
+				
+				<!-- <img src="<?php //bloginfo('template_url') ?>/images/banner-telemedellin-radio.jpg" > -->
+				
+			</div>
+		</a>
 	<?php if(is_category()): ?>
 		<div class="category-info">
 		<h1><?php single_cat_title('', true)?></h1>
