@@ -1,0 +1,7 @@
+[03-Mar-2015 17:21:03 UTC] PHP Warning:  Missing argument 2 for rs_trash_schedule_item() in /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php on line 510
+[03-Mar-2015 17:21:03 UTC] PHP Warning:  Missing argument 2 for rs_trash_schedule_item() in /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php on line 510
+[03-Mar-2015 17:21:03 UTC] PHP Warning:  Missing argument 2 for rs_trash_schedule_item() in /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php on line 510
+[03-Mar-2015 17:21:03 UTC] PHP Warning:  Missing argument 2 for rs_trash_schedule_item() in /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php on line 510
+[03-Mar-2015 17:21:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php:510) in /home/telemede/public_html/radio/wp-includes/pluggable.php on line 1121
+[03-Mar-2015 19:37:36 UTC] PHP Warning:  Missing argument 2 for rs_trash_schedule_item() in /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php on line 510
+[03-Mar-2015 19:37:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/telemede/public_html/radio/wp-content/plugins/riotschedule/riotschedule.php:510) in /home/telemede/public_html/radio/wp-includes/pluggable.php on line 1121

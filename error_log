@@ -1,0 +1,6 @@
+[04-Mar-2015 04:33:12 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/telemede/public_html/radio/wp-content/themes/va_tmradio/programacion.php on line 20
+[04-Mar-2015 04:34:17 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/telemede/public_html/radio/wp-content/themes/va_tmradio/programacion.php on line 20
+[04-Mar-2015 04:57:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/telemede/public_html/radio/wp-content/themes/va_tmradio/programacion.php on line 73
+[04-Mar-2015 04:57:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/telemede/public_html/radio/wp-content/themes/va_tmradio/programacion.php on line 73
+[04-Mar-2015 05:01:02 UTC] PHP Parse error:  syntax error, unexpected ':' in /home/telemede/public_html/radio/wp-content/themes/va_tmradio/programacion.php on line 75
+[04-Mar-2015 22:12:18 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/telemede/public_html/radio/wp-content/themes/va_tmradio/content.php on line 37

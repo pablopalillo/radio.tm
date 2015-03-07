@@ -1,0 +1,137 @@
+.ws-schedule a {
+	color: #000000;
+	text-decoration: none;
+}
+.ws-schedule a:hover {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+.ws-schedule table {
+	table-layout: fixed;
+	border-padding: 0px !important;
+	}
+.ws-schedule .verticalcolumn1 {
+	float: left;
+	width: 100px;
+}
+.ws-schedule .verticalcolumn2 {
+	float: left;
+	width: 50px;
+}
+.ws-schedule table.verticalheader {
+	width: 100px;
+}
+.ws-schedule table.vertical1 {
+	width: 100px;
+}
+.ws-schedule table.vertical2 {
+	width: 50px;
+}
+.ws-schedule th.rowheader {
+	width: 30px;
+	height: 50px;
+}
+.ws-schedule th {
+	background: #F5F5DC;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.ws-schedule tr th {
+	padding: 0px !important;
+}
+
+.ws-schedule tr.topheader {
+	height: 30px;
+}
+.ws-schedule tr.row1 {
+	height: 100px;
+	vertical-align: top;
+}
+.ws-schedule tr.row2 {
+	height: 50px;
+	vertical-align: top;
+}
+.ws-schedule #3rowstall {
+	height: 90px;
+}
+.ws-schedule tr.datarow {
+	height: 70px;
+}
+.ws-schedule tr.datarow1 {
+	height: 70px;
+}
+.ws-schedule tr.datarow2 {
+	height: 140px;
+}
+.ws-schedule tr.datarow3 {
+	height: 210px;
+}
+.ws-schedule tr.datarow4 {
+	height: 280px;
+}
+.ws-schedule tr.datarow5 {
+	height: 350px;
+}
+.ws-schedule tr.datarow6 {
+	height: 420px;
+}
+.ws-schedule tr.datarow7 {
+	height: 490px;
+}
+.ws-schedule tr.datarow8 {
+	height: 560px;
+}
+.ws-schedule tr.vertrow {
+	width: 50px;
+}
+.ws-schedule td:hover {
+	background: #CCCCCC;
+}
+.ws-schedule table td {
+	background: #EEEEEE;
+}
+.ws-schedule td.cat1, td.cat2, td.cat3, td.cat4, td.cat5 {
+	border: 1px solid;
+}
+.ws-schedule td.cat1 {
+	background: #009B95 no-repeat bottom right;
+	border-color: #006561;
+}
+.ws-schedule td.cat1:hover {
+	background-color: #33CDC7;
+}
+.ws-schedule td.cat2 {
+	background: #4282D3 no-repeat bottom right;
+	border-color: #05326D;
+}
+.ws-schedule td.cat2:hover {
+	background-color: #6997D3;
+}
+.ws-schedule td.cat3 {
+	background: #FF9E00 no-repeat bottom right;
+	border-color: #BF8830;
+}
+.ws-schedule td.cat3:hover {
+	background-color: #FFC973;
+}
+.ws-schedule td.cat4 {
+	background: #FF7100 no-repeat bottom right;
+	border-color: #A64A00;
+}
+.ws-schedule td.cat4:hover {
+	background-color: #FF9540;
+}
+.ws-schedule td.cat5 {
+	background: #00B358 no-repeat bottom right;
+	border-color: #007439;
+}
+.ws-schedule td.cat5:hover {
+	background-color: #62D99C;
+}
+.ws-schedule #continuedown {
+	border-bottom: dashed 2px #000000;
+}
+.ws-schedule #continueright {
+	border-right: dashed 2px #000000;
+}

@@ -1,0 +1,295 @@
+<?php
+/**
+ * Plugin Name: TM Radio
+ * Plugin URI: http://telemedellin.tv
+ * Description: Telemedellín Radio
+ * Author: Victor Arias
+ * Version: 1.0.0
+ * Author URI: http://telemedellin.tv
+ */
+?>
+<?php
+// l10n
+load_plugin_textdomain('tmr', FALSE, 'programacion/languages');
+
+add_action('admin_init', 'tm_init');
+function tm_init() {
+	$tm_taxonomies = get_taxonomies();
+	if (is_array($tm_taxonomies)) {
+		$tm_options = get_option('tm_options');
+		if (empty($tm_options['excluded_taxonomies']))
+			$tm_options['excluded_taxonomies'] = array();
+		
+	    foreach ($tm_taxonomies as $tm_taxonomy) {
+			if (in_array($tm_taxonomy, $tm_options['excluded_taxonomies']))
+				continue;
+	        add_action($tm_taxonomy.'_edit_form_fields', 'tm_edit_schedule_field');
+	    }
+	}
+}
+
+function tm_add_style() {
+	echo '<style type="text/css" media="screen">
+		input[type="checkbox"]{width: auto;}
+		.horario input{width: auto!important;}
+	</style>';
+}
+
+// add fields in edit form
+function tm_edit_schedule_field($taxonomy) {
+	if($taxonomy->parent == 5)
+	{
+	$taxonomy_days = tm_taxonomy_days( $taxonomy->term_id );
+	$days = array();
+	foreach($taxonomy_days as $day)
+	{
+		$days[] = $day;
+	}
+	
+	$html = '<tr class="form-field">'.PHP_EOL;
+	$html .= '	<th scope="row" valign="top">'.PHP_EOL;
+	$html .= '		<label for="taxonomy_days">' . __('Days', 'tmr') . '</label>'.PHP_EOL;
+	$html .= '	</th>'.PHP_EOL;
+	$html .= '	<td>'.PHP_EOL;
+	for($i = 0; $i < count($days); $i++)
+	{
+	$html .= '		<div class="horario">'.PHP_EOL;
+	$html .= '			<label for="taxonomy_day_'.$i.'">' . __('Day', 'tmr') . '</label>'.PHP_EOL;
+	$html .= '			<select name="taxonomy_day_'.$i.'">'.PHP_EOL;
+	$html .= '				<option value="1" '.(($days[$i]["day"] == 1)?"selected":"").'>' . __('Monday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '				<option value="2" '.(($days[$i]["day"] == 2)?"selected":"").'>' . __('Tuesday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '				<option value="3" '.(($days[$i]["day"] == 3)?"selected":"").'>' . __('Wednesday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '				<option value="4" '.(($days[$i]["day"] == 4)?"selected":"").'>' . __('Thursday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '				<option value="5" '.(($days[$i]["day"] == 5)?"selected":"").'>' . __('Friday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '				<option value="6" '.(($days[$i]["day"] == 6)?"selected":"").'>' . __('Saturday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '				<option value="7" '.(($days[$i]["day"] == 7)?"selected":"").'>' . __('Sunday', 'tmr') . '</option>'.PHP_EOL;
+	$html .= '			</select>'.PHP_EOL;
+	$html .= '				<label for="taxonomy_hour_'.$i.'">' . __('Schedule', 'tmr') . '</label>'.PHP_EOL;
+	$html .= '				<input type="number" max="23" min="0" name="taxonomy_hour_'.$i.'" class="taxonomy_hour" value="'.$days[$i]['hour'].'"  />'.PHP_EOL;
+	$html .= '				<input type="number" max="59" min="0" step="5" name="taxonomy_minute_'.$i.'" class="taxonomy_minute" value="'.$days[$i]['minute'].'" />'.PHP_EOL;
+	$html .= '				<label for="duracion">' . __('Duration', 'tmr') . '</label>'.PHP_EOL;
+	$html .= '				<input type="number" min="1" name="taxonomy_duration_'.$i.'" class="taxonomy_duration" value="'.$days[$i]['duration'].'" />'.PHP_EOL;
+	$html .= '			<a href="#" class="delete-row">' . __('Delete row', 'tmr') . '</a>'.PHP_EOL;
+	$html .= '		</div>'.PHP_EOL;
+	}//for
+	$html .= '		<div>'.PHP_EOL;
+	$html .= '			<a href="#" class="add-day">' . __('Add day', 'tmr') . '</a>'.PHP_EOL;
+	$html .= '			<input id="count" type="hidden" name="count" value="'.count($days).'" />'.PHP_EOL;
+	$html .= '		</div>'.PHP_EOL;
+	$html .= '	</td>'.PHP_EOL;
+	$html .= '</tr>'.PHP_EOL;
+	echo $html.tm_script();
+	}
+}
+// upload using wordpress upload
+
+function tm_script() {
+	return '<script type="text/javascript">
+		function add_day(event)
+		{
+			event.preventDefault();
+			var ad = jQuery(".add-day"),
+				dia = "",
+				count = jQuery("#count").val();
+			dia += "<div class=\"horario\">";
+			dia += "	<label for=\"taxonomy_day_"+(count)+"\">' . __('Day', 'tmr') . '</label>";
+			dia += "	<select name=\"taxonomy_day_"+(count)+"\">";
+			dia += "		<option value=\"1\">' . __('Monday', 'tmr') . '</option>";
+			dia += "		<option value=\"2\">' . __('Tuesday', 'tmr') . '</option>";
+			dia += "		<option value=\"3\">' . __('Wednesday', 'tmr') . '</option>";
+			dia += "		<option value=\"4\">' . __('Thursday', 'tmr') . '</option>";
+			dia += "		<option value=\"5\">' . __('Friday', 'tmr') . '</option>";
+			dia += "		<option value=\"6\">' . __('Saturday', 'tmr') . '</option>";
+			dia += "		<option value=\"7\">' . __('Sunday', 'tmr') . '</option>";
+			dia += "	</select>";
+			dia += "		<label for=\"taxonomy_hour_"+(count)+"\">' . __('Schedule', 'tmr') . '</label>";
+			dia += "		<input type=\"number\" max=\"23\" min=\"0\" name=\"taxonomy_hour_"+(count)+"\" class=\"taxonomy_hour\" value=\"14\">";
+			dia += "		<input type=\"number\" max=\"59\" min=\"0\" step=\"5\" name=\"taxonomy_minute_"+(count)+"\" class=\"taxonomy_minute\" value=\"0\">";
+			dia += "		<label for=\"duracion_"+(count)+"\">' . __('Duration', 'tmr') . '</label>";
+			dia += "		<input type=\"number\" min=\"1\" name=\"taxonomy_duration_"+(count)+"\" class=\"taxonomy_duration\" value=\"60\">";
+			dia += "	<a href=\"#\" class=\"delete-row\">' . __('Delete row', 'tmr') . '</a>";
+			dia += "</div>";
+			jQuery("#count").val(count*1+1);
+			ad.parent().before(dia);
+		}
+		function check_check(el)
+		{
+			var horario 	= el.parent().parent().children(".horario"),
+				hour 		= horario.children(".taxonomy_hour"),
+				minute 		= horario.children(".taxonomy_minute"),
+				duration 	= horario.children(".taxonomy_duration");
+			if(el.is(":checked"))
+			{
+				horario.show();
+				if(hour.val() == "") 		hour.val(8);
+				if(minute.val() == "") 		minute.val(00);
+				if(duration.val() == "") 	duration.val(30);
+			}else
+			{
+				horario.hide();
+				hour.val("");
+				minute.val("");
+				duration.val("");
+			}
+		}
+		jQuery(document).ready(function($) {
+			var wordpress_ver = "'.get_bloginfo("version").'";
+			$(".add-day").click(add_day);
+			$(document).on("click", ".delete-row", function(event){
+				event.preventDefault();
+				$("#count").val($("#count").val()-1);
+				$(this).parent().remove();
+			});
+			$(".checkbox input").each(function(i, el){
+				check_check($(el));
+			});
+			$(".checkbox input").click(function(){
+				check_check($(this));
+			});
+	    });
+	</script>';
+}
+
+// save our taxonomy schedule while edit or save term
+add_action('edit_term','tm_save_taxonomy_schedule');
+function tm_save_taxonomy_schedule($term_id) {
+	global $wpdb;
+	if (!isset($wpdb->term_schedule)) {
+		$wpdb->term_schedule = $wpdb->prefix . 'term_schedule';
+	}
+	//Borrar los registros que tenga
+	$wpdb->delete( 
+		"{$wpdb->term_schedule}", 
+		array(
+			'term_id'	=> $term_id,
+		), 
+		'%d'
+	);
+	if(isset($_POST['count']) && $_POST['count'] > 0)
+    {
+    	$count = $_POST['count'];
+    	for($i = 0; $i < $count; $i++)
+    	{
+    		$dia 		= $_POST['taxonomy_day_'		.$i];
+    		$hora 		= $_POST['taxonomy_hour_'		.$i];
+    		$minuto 	= $_POST['taxonomy_minute_'		.$i];
+    		$duracion 	= $_POST['taxonomy_duration_'	.$i];
+    		//Verificar si el día existe
+    		$vdiaq = $wpdb->prepare( "SELECT * FROM {$wpdb->term_schedule} WHERE term_id = '%d' AND day = '%d'", $term_id, $dia );
+    		$vdia = $wpdb->get_row($vdiaq);
+    		if(!$vdia)
+    		{
+    			//Si no existe se guarda el nuevo registro
+    			//$sscheduleq = $wpdb->prepare( "INSERT INTO {$wpdb->term_schedule} VALUES (%d, %d, %d, %d, %d)", $term_id, $dia, $hora, $minuto, $duracion );
+    			$insert = $wpdb->insert( 
+    				"{$wpdb->term_schedule}", 
+    				array(
+    					'term_id'	=> $term_id,
+    					'day' 		=> $dia, 
+    					'hour' 		=> $hora, 
+    					'minute' 	=> $minuto, 
+    					'duration'	=> $duracion
+    				), 
+    				'%d'
+    			);
+    		}else
+    		{
+    			//Si existe se verifica la hora, el minuto y la duración
+    			if($vdia->hour != $hora || $vdia->minute != $minuto || $vdia->duration != $duracion)
+    			{
+    				//Si hay diferencias, las guardo
+    				$wpdb->update( 
+    					"{$wpdb->term_schedule}", 
+    					array(
+	    					'hour' 		=> $hora, 
+	    					'minute' 	=> $minuto, 
+	    					'duration'	=> $duracion
+	    				), 
+	    				array(
+	    					'term_id'	=> $term_id,
+	    					'day'		=> $dia
+	    				), 
+	    				'%d', 
+	    				'%d' 
+	    			);
+    			}
+    		}
+    	}
+    }
+}
+
+// get taxonomy image url for the given term_id (Place holder image by default)
+function tm_taxonomy_days($term_id = NULL) {
+	global $wpdb;
+	if (!isset($wpdb->term_schedule)) {
+		$wpdb->term_schedule = $wpdb->prefix . 'term_schedule';
+	}
+	if (!$term_id) {
+		if (is_category())
+			$term_id = get_query_var('cat');
+		elseif (is_tax()) {
+			$current_term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+			$term_id = $current_term->term_id;
+		}
+	}
+	
+	$gdaysq = $wpdb->prepare( "SELECT * FROM {$wpdb->term_schedule} WHERE term_id = '%d'", $term_id );
+    return $wpdb->get_results( $gdaysq, ARRAY_A );
+}
+
+// style the image in category list
+if ( strpos( $_SERVER['SCRIPT_NAME'], 'edit-tags.php' ) > 0 ) {
+	add_action( 'admin_head', 'tm_add_style' );
+	//add_filter("attribute_escape", "z_change_insert_button_text", 10, 2);
+}
+
+// New menu submenu for plugin options in Settings menu
+add_action('admin_menu', 'tm_options_menu');
+function tm_options_menu() {
+	add_options_page(__('TM radio settings', 'tmr'), __('TM radio', 'zci'), 'manage_options', 'tmr-options', 'tm_options');
+	add_action('admin_init', 'tm_register_settings');
+}
+
+// Register plugin settings
+function tm_register_settings() {
+	register_setting('tm_options', 'tm_options', 'tm_options_validate');
+	add_settings_section('tmr_settings', __('TM radio settings', 'tmr'), 'tm_section_text', 'tmr-options');
+	add_settings_field('tm_excluded_taxonomies', __('Excluded Taxonomies', 'tmr'), 'tm_excluded_taxonomies', 'tmr-options', 'tmr_settings');
+}
+
+// Settings section description
+function tm_section_text() {
+	echo '<p>'.__('Please select the taxonomies you want to exclude it from TM radio plugin', 'tmr').'</p>';
+}
+
+// Excluded taxonomies checkboxs
+function tm_excluded_taxonomies() {
+	$options = get_option('tm_options');
+	$disabled_taxonomies = array('nav_menu', 'link_category', 'post_format');
+	foreach (get_taxonomies() as $tax) : if (in_array($tax, $disabled_taxonomies)) continue; ?>
+		<input type="checkbox" name="tm_options[excluded_taxonomies][<?php echo $tax ?>]" value="<?php echo $tax ?>" <?php checked(isset($options['excluded_taxonomies'][$tax])); ?> /> <?php echo $tax ;?><br />
+	<?php endforeach;
+}
+
+// Validating options
+function tm_options_validate($input) {
+	return $input;
+}
+
+// Plugin option page
+function tm_options() {
+	if (!current_user_can('manage_options'))
+		wp_die(__( 'You do not have sufficient permissions to access this page.', 'tmr'));
+		$options = get_option('tm_options');
+	?>
+	<div class="wrap">
+		<?php screen_icon(); ?>
+		<h2><?php _e('TM radio', 'tmr'); ?></h2>
+		<form method="post" action="options.php">
+			<?php settings_fields('tm_options'); ?>
+			<?php do_settings_sections('tmr-options'); ?>
+			<?php submit_button(); ?>
+		</form>
+	</div>
+<?php
+}

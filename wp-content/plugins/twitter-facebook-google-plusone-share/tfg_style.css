@@ -1,0 +1,19 @@
+/* CSS Document */
+#leftcontainerBox {
+float:left;
+z-index: 1000;
+}
+#leftcontainerBox .buttons {
+display: inline-block;
+margin:4px 4px 4px 4px;
+width:60px;
+height:60px;
+padding-bottom:2px;
+padding-left:3px;
+}
+.bottomcontainerBox {
+float:right;
+height:30px;
+text-align: right;
+width:100%;
+}
