@@ -239,13 +239,35 @@ select
 {
 	background-position: 0 -30px;
 }
-#footer .appstore
+
+#footer .itunes
 {
 	background-position: 0 -60px;
 }
+
+#footer .appstore
+{
+	background-position: 0 -30px;
+}
 #footer .playstore
 {
+	background-image: url(images/iconos-radio2.png);
+	background-repeat: no-repeat;
 	background-position: 0 -90px;
+}
+
+#footer .windowsm
+{
+	background-image: url(images/app.png);
+	background-repeat: no-repeat;
+	background-position: 0 0px;
+}
+
+#footer .blackberry
+{
+	background-image: url(images/app.png);
+	background-repeat: no-repeat;
+	background-position: 0 -60px;
 }
 #main_nav
 {
