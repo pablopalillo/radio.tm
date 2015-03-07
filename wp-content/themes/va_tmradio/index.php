@@ -25,7 +25,7 @@ if(is_category())
 	<div id="main-content-home">
 		<div id="en-vivo">
 			<a href="<?php bloginfo('template_url') ?>/en-vivo" >
-			<img src="<?php bloginfo('template_url') ?>/images/logo-tmradio-vivo.jpg" >
+			<!-- <img src="<?php bloginfo('template_url') ?>/images/banner-telemedellin-radio.jpg" > -->
 			</a>
 		</div>
 	<?php if(is_category()): ?>
