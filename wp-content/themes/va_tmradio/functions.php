@@ -35,6 +35,9 @@ add_action("wp_ajax_get_posts_by_moy", "get_posts_by_moy");
 add_action("wp_ajax_nopriv_get_podcast", "get_podcast");
 add_action("wp_ajax_get_podcast", "get_podcast");
 
+add_action("wp_ajax_nopriv_get_images_background", "get_images_background");
+add_action("wp_ajax_get_images_background", "get_images_background");
+
 function get_posts_by_moy() 
 {
 	if ( !wp_verify_nonce( $_REQUEST['nonce'], "posts_moy_nonce")) {
@@ -90,6 +93,41 @@ function get_podcast()
 		echo json_encode($result);
 	}
 	die();
+}
+
+function get_images_background()
+{
+	$pathArchivos = array();
+
+	try 
+	{
+		$directorio   = opendir( get_template_directory().'/images/background');
+		
+	} catch (Exception $e) 
+	{
+		echo 'Error al leer directorio'.$e->getMessage();
+		die;
+	}
+
+	if($directorio)
+	{
+		while ( false !== ($archivo = readdir($directorio)) ) 
+		{
+			if( !is_dir($archivo))
+			{
+				$pathArchivos[]  =  $archivo;
+			}
+		}
+
+		 closedir($directorio);
+
+		if( !empty($pathArchivos) )
+		{
+			echo json_encode($pathArchivos, JSON_FORCE_OBJECT);
+		}	
+	}
+	die();
+
 }
 
 // enqueue styles

@@ -1,16 +1,31 @@
-jQuery(document).ready(function(){
 
+jQuery(document).ready(function(){
 	/*
 	* Here is an example of how to use Backstretch as a slideshow.
 	* Just pass in an array of images, and optionally a duration and fade value.
 	*/
 	// Duration is the amount of time in between slides,
 	// and fade is value that determines how quickly the next image will fade in
-	jQuery.backstretch([
-	"/wp-content/themes/va_tmradio/images/background/1.jpg"
-	, "/wp-content/themes/va_tmradio/images/background/2.jpg"
-	, "/wp-content/themes/va_tmradio/images/background/3.jpg"
-	], {duration: 8000, fade: 750}); 
+	jQuery.ajax({
+		url: 		myAjax.ajaxurl,
+		type: 		"post",
+		dataType:   "json",
+		data: {
+			action: "get_images_background"
+		}
+	}).done(function(data) {
+
+		 var files = [];
+
+		 jQuery.each(data,function(index, element) {
+
+		 	files[index]	= "wp-content/themes/va_tmradio/images/background/"+element;
+
+	   	 });
+
+		jQuery.backstretch(files, {duration: 8000, fade: 750});
+
+	});
 
 
 	jQuery('.menu-movil nav').prepend('<div id="menu-icon">Menu</div>');
