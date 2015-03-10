@@ -37,6 +37,18 @@ select
 	color: #9a9a9a;
 	font-size: .9em;
 }
+.backstretch:after, 
+.backstretch::after 
+{
+	background: url(images/malla.png) repeat top left fixed,  linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)); 
+	background-size: auto, auto;
+	content: "";
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index: 2;
+}
+
 .category-info
 {
 	margin-bottom: 1em;
@@ -65,6 +77,7 @@ select
 	text-indent: 100%;
 	white-space: nowrap;
 	width: auto;
+	background-size: contain;
 }
  
 
@@ -259,6 +272,8 @@ select
 
 #footer .appstore
 {
+	background-image: url(images/app.png);
+	background-repeat: no-repeat;
 	background-position: 0 -30px;
 }
 #footer .playstore

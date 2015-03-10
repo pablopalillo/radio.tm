@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+
 	/*
 	* Here is an example of how to use Backstretch as a slideshow.
 	* Just pass in an array of images, and optionally a duration and fade value.
