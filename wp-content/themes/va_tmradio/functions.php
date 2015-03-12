@@ -130,6 +130,56 @@ function get_images_background()
 
 }
 
+/**
+* bt_pagination
+* Funcion para crear paginado adaptado al estilo de boostrap
+*
+* @version  1.0
+* @author Pablo Martínez
+*/
+function bt_pagination() 
+{
+	$prev_arrow = is_rtl() ? '&laquo;' : '&laquo;';
+	$next_arrow = is_rtl() ? '&raquo;' : '&raquo;';
+
+	global $wp_query;
+	$curr 	= get_query_var('paged');
+	settype($curr, "int"); 
+
+	$total 	= $wp_query->max_num_pages;
+	$big = 999999999;
+	if( $total > 1 )  
+	{
+		if( !$current_page = $curr )
+		{
+			$current_page = 1;
+		}
+		if( get_option('permalink_structure') ) 
+		{
+			$format = 'page/%#%/';
+		} else 
+		{
+			$format = '&paged=%#%';
+		}
+
+		$pag = paginate_links(array(
+				'base'			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format'		=> $format,
+				'current'		=> max( 1, $curr ),
+				'total' 		=> $total,
+				'mid_size'		=> 3,
+				'type' 			=> 'list',
+				'prev_text'		=> $prev_arrow,
+				'next_text'		=> $next_arrow,
+				) );
+
+		$replace = str_replace("<li><span class='page-numbers current'>","<li class='active'><span class='page-numbers current'>", $pag );
+		$replace = str_replace( "<ul class='page-numbers'>", '<ul class="pagination">', $replace );
+
+		echo $replace;
+	}
+}
+
 // enqueue styles
 if( !function_exists("theme_styles") ) {  
     function theme_styles() { 

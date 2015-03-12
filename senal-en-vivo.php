@@ -57,6 +57,7 @@ if($r)
   			#content{clear:both;}
   			#player{float:right;}
   			#programacion{background: #98c01f;color:#fff;float:left;margin-right:15px;overflow:hidden;padding:10px;width:205px;}
+  			video{width: 300px;height: 20px}
   		</style>
 	</head>
 	<body>
@@ -87,9 +88,9 @@ if($r)
 	    	</div>
 			<div id="player">
 			<?php if($version == 'pc'): ?>
-				<iframe width="300" height="30" frameborder="0" src="http://62.210.209.179:8056/stream">
+				<video controls="" autoplay="" name="media"><source src="http://62.210.209.179:8056/stream" type="audio/mpeg"></video>
 			<?php else: ?>
-				<iframe width="300" height="30" frameborder="0" src="http://62.210.209.179:8056/stream">
+				<video controls="" autoplay="" name="media"><source src="http://62.210.209.179:8056/stream" type="audio/mpeg"></video>
 			<?php endif; ?>
 			</div>
 		</div>

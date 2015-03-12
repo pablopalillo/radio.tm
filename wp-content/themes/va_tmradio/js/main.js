@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
 
 		 jQuery.each(data,function(index, element) {
 
-		 	files[index]	= "wp-content/themes/va_tmradio/images/background/"+element;
+		 	files[index]	= "/wp-content/themes/va_tmradio/images/background/"+element;
 
 	   	 });
 

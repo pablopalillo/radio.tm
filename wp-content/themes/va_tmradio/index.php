@@ -23,11 +23,7 @@ if(is_category())
 <?php get_header(); ?>
 <div class="col-sm-9 col-xs-12 inner-category">
 	<div id="main-content-home">
-		<!-- <a  href="<?php bloginfo('template_url') ?>/en-vivo" >
-			<div id="en-vivo">
-					
-			</div>
-		</a> -->
+
 	<?php if(is_category()): ?>
 		<div class="category-info">
 		<h1><?php single_cat_title('', true)?></h1>
@@ -60,19 +56,24 @@ if(is_category())
 		</form>
 		<div id="emision"></div>
 	<?php else: ?>
+
 	<?php 
-	if(have_posts()):?>
+		$args  = array('category_name' => 'programas', 'orderby' => 'date', 'order' => 'DESC');
+		$query = new WP_Query( $args );
+	?>  
+	<?php
+	if($query->have_posts()):?>
 		<h1>Últimas emisiones</h1>
 
-		<?php while(have_posts()): the_post();
-			get_template_part( 'content', get_post_format() );
+		<?php while($query->have_posts()): $query->the_post();
+				get_template_part( 'content', get_post_format() );
 		endwhile; ?>
 
 	<?php else: ?>
 
 		<?php 
-		$catid = get_category_by_slug('programas')->term_id; 
-		$categories = get_categories( array('hide_empty'=>0,'child_of' => $catid) );
+			$catid = get_category_by_slug('programas')->term_id; 
+			$categories = get_categories( array('hide_empty'=>0,'child_of' => $catid) );
 		?>
 		<h1>Programas</h1>
 		<?php
