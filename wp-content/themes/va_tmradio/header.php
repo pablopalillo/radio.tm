@@ -20,10 +20,10 @@
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo-tmradio.jpg" alt="<?php bloginfo('name') ?>" />
 					</a>
 				</h1>
-				<div class="col-sm-6 hidden-xs">
+				<div class="col-sm-7 hidden-xs">
 					<?php get_template_part('menu'); ?>
 				</div>
-				<div class="col-sm-3 col-xs-6">
+				<div class="col-sm-2 col-xs-6">
 					<ul class="redes">
 						<li><a href="https://www.facebook.com/Telemedradio" class="facebook" rel="nofollow" target="_blank">Facebook</a></li>
 						<li><a href="https://twitter.com/TelemedRadio" class="twitter" rel="nofollow" target="_blank">Twitter</a></li>

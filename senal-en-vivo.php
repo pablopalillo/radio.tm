@@ -13,6 +13,7 @@ $c_hour 	= date('H');
 $c_minute	= date('i');
 $ch = mktime($c_hour, $c_minute);
 
+//$c = mysqli_connect('localhost', 'radio_radio', 'Zh[][Q8znqO1', 'radio_radio');
 $c = mysqli_connect('localhost', 'telemede_radio', '?t0NZc6f4-&b', 'telemede_radio');
 $q = "SELECT * ";
 $q .= "FROM wp_term_schedule AS ts ";
@@ -55,9 +56,27 @@ if($r)
   			header div{vertical-align:top;}
   			header > div{float: right;margin-top:30px;}
   			#content{clear:both;}
-  			#player{float:right;}
-  			#programacion{background: #98c01f;color:#fff;float:left;margin-right:15px;overflow:hidden;padding:10px;width:205px;}
+  			#player{float:right;width: 40%;}
+
+  			#programacion{ background: none repeat scroll 0 0 #98c01f;color: #fff;float: left;height: 30px;margin-right: 15px;overflow: hidden;position: relative;width: 45%;}
+  			#programacion .display-programacion{ -webkit-animation: 30s linear 0s normal none infinite running marquee;animation: 30s linear 0s normal none infinite running marquee;display: block;height: 30px;overflow: hidden;position: absolute;width: 100%;}
   			video{width: 300px;height: 20px}
+  			@-webkit-keyframes marquee {
+			0% {
+			    left: 100%;
+				}
+			100% {
+			    left: -140%;
+				}
+			}
+			@-webkit-keyframes marquee {
+			0% {
+			    left: 100%;
+				}
+			100% {
+			    left: -140%;
+				}
+			}
   		</style>
 	</head>
 	<body>
@@ -84,7 +103,9 @@ if($r)
 	    </header>
 	    <div id="content">
 	    	<div id="programacion">
-	    		<?php echo (!empty($current))?utf8_encode($current['name']):''; //El artista de mi vida ?>
+	    		<span class="display-programacion">
+	    			<?php echo (!empty($current))?utf8_encode($current['name']):''; ?>
+	    		</span>
 	    	</div>
 			<div id="player">
 			<?php if($version == 'pc'): ?>
