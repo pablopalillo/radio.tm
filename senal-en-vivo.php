@@ -13,8 +13,8 @@ $c_hour 	= date('H');
 $c_minute	= date('i');
 $ch = mktime($c_hour, $c_minute);
 
-//$c = mysqli_connect('localhost', 'radio_radio', 'Zh[][Q8znqO1', 'radio_radio');
-$c = mysqli_connect('localhost', 'telemede_radio', '?t0NZc6f4-&b', 'telemede_radio');
+$c = mysqli_connect('localhost', 'radio_radio', 'Zh[][Q8znqO1', 'radio_radio');
+//$c = mysqli_connect('localhost', 'telemede_radio', '?t0NZc6f4-&b', 'telemede_radio');
 $q = "SELECT * ";
 $q .= "FROM wp_term_schedule AS ts ";
 $q .= "INNER JOIN wp_terms AS t ON ts.term_id = t.term_id ";
@@ -57,16 +57,18 @@ if($r)
   			header > div{float: right;margin-top:30px;}
   			#content{clear:both;}
   			#player{float:right;width: 40%;}
+  			.twitter-share-button{width: 85px !important}
+  			#plusone{width: 56px !important}
 
   			#programacion{ background: none repeat scroll 0 0 #98c01f;color: #fff;float: left;height: 30px;margin-right: 15px;overflow: hidden;position: relative;width: 45%;}
-  			#programacion .display-programacion{ -webkit-animation: 30s linear 0s normal none infinite running marquee;animation: 30s linear 0s normal none infinite running marquee;display: block;height: 30px;overflow: hidden;position: absolute;width: 100%;}
-  			video{width: 300px;height: 20px}
-  			@-webkit-keyframes marquee {
+  			#programacion .display-programacion{ -webkit-animation: 30s linear 0s normal none infinite running marquee; animation: 30s linear 0s normal none infinite running marquee;display: block;height: 30px;overflow: hidden;position: absolute;width: 100%;}
+  			video{width: 100%;height: 20px}
+  			@keyframes marquee {
 			0% {
 			    left: 100%;
 				}
 			100% {
-			    left: -140%;
+			    left: -120%;
 				}
 			}
 			@-webkit-keyframes marquee {
@@ -74,8 +76,13 @@ if($r)
 			    left: 100%;
 				}
 			100% {
-			    left: -140%;
+			    left: -120%;
 				}
+			}
+
+			@media only screen and (max-width: 387px) {
+				#programacion{ display:block; float:none ;width: 100%;margin-bottom: 30px }
+				#player{ display:block ; float: none; width: 100% }
 			}
   		</style>
 	</head>
@@ -88,9 +95,9 @@ if($r)
 			</h1>
 			<div>
 				<!--Facebook-->
-				<div class="fb-share-button" data-type="button_count" data-width="130"></div>
+				<div class="fb-share-button" data-type="button_count" data-width="86"></div>
 				<!--Twitter-->
-				<a href="https://twitter.com/share" class="twitter-share-button" data-via="telemedellin" data-lang="es">Twittear</a>
+				<a  href="https://twitter.com/share"  data-size="86" class="twitter-share-button" data-via="telemedellin" data-lang="es">Twittear</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 				<!--G+-->
 				<div class="g-plusone" data-size="medium"></div>
