@@ -9,7 +9,9 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-  		<link rel="shortcut icon" href="/favicon.ico" />
+  		<link rel="shortcut icon" href="<?php echo home_url(); ?>/favicon.ico" type="image/x-icon">
+		<!-- <link rel="icon" href="<?php echo home_url(); ?>/favicon.ico" type="image/x-icon"> -->
+
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -17,7 +19,7 @@
 			<div class="row">
 				<h1 class="col-sm-3 col-xs-6">
 					<a href="<?php echo home_url(); ?>">
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo-tmradio.jpg" alt="<?php bloginfo('name') ?>" />
+						<img width="220" src="<?php bloginfo('stylesheet_directory'); ?>/images/logo-tmradio.jpg" alt="<?php bloginfo('name') ?>" />
 					</a>
 				</h1>
 				<div class="col-sm-7 hidden-xs">

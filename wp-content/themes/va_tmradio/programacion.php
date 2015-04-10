@@ -78,7 +78,7 @@ endforeach;
 					<a href="<?php echo get_category_link( $cat->cat_ID ) ?>">
 						<time><?php echo hora_programa($registro);?></time>
 						<span><?php echo $cat->name ?></span>
-						<!-- <img src="<?php //echo $cat_img?>" alt="<?php //echo $cat->name?>" width="70" height="70" class="hidden-xs" /> -->
+						<img src="<?php //echo $cat_img?>" alt="<?php //echo $cat->name?>" width="70" height="70" class="hidden-xs" />
 					</a>
 				</div>	
 			<?php endforeach;?></div>

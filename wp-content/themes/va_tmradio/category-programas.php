@@ -10,7 +10,7 @@
 			<a href="<?php echo get_category_link( $category->cat_ID )?>">
 				<h2><?php echo $category->name ?></h2>
 				<?php if (function_exists('z_taxonomy_image_url')):?>
-					<img src="<?php echo z_taxonomy_image_url($category->cat_ID, 'programa-thumb'); ?>" alt="" />
+				<img src="<?php echo z_taxonomy_image_url($category->cat_ID, 'programa-thumb') ?>" alt="<?php echo $category->name ?> " /> -->
 				<?php endif; ?>
 			</a>
 		</div>

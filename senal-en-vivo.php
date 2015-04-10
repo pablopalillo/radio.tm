@@ -49,7 +49,7 @@ if($r)
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-  		<link rel="shortcut icon" href="/favicon.ico" />
+  		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   		<style type="text/css">
   			body{background:#f07b0a;font-family:"Century Gothic",Arial,sans-serif;margin:0 15px;}
   			header h1{float:left;}
