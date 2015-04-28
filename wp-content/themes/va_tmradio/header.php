@@ -34,10 +34,10 @@
 				</div>
 			</div>
 	    </header>
-	    <div class="row">
+	    <div class="container">
 			<div class="col-xs-12 visible-xs menu-movil">
 				<?php get_template_part('menu'); ?>
 			</div>
 		</div>
 		<div id="content" class="container">
-			<div class="row">
+			<div class="container-fluid">

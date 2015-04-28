@@ -47,7 +47,9 @@ global $wpdb;
 if (!isset($wpdb->term_schedule)) {
 	$wpdb->term_schedule = $wpdb->prefix . 'term_schedule';
 }
-$scheduleq 	= "SELECT * FROM {$wpdb->term_schedule} ORDER BY day ASC";
+$scheduleq 	=	"SELECT s.term_id, day, hour, minute, duration FROM {$wpdb->term_schedule} s "
+			  	."INNER JOIN wp_terms t ON ( s.term_id = t.term_id ) WHERE s.day > 0 ORDER BY day ASC;";
+
 $schedule 	= $wpdb->get_results( $scheduleq );
 $dias = array(1 => array(), 2 => array(), 3 => array(), 4 => array(), 5 => array(), 6 => array(), 7 => array());
 foreach($schedule as $registro):

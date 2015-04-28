@@ -365,10 +365,8 @@ select
 {
 	padding-top: 10px;
 }
-#sidebar
-{
-	
-}
+
+
 #sidebar .widgettitle, 
 #sidebar .widget-title
 {
@@ -559,6 +557,16 @@ h2.resp-tab-active {
 .resp-tab-content-active {
     display: block;
 }
+
+#primary .post{
+	margin-bottom: 40px;
+	max-height: 300px;
+}
+
+#primary .post header a img{
+	max-height: 200px;
+}
+
 
 @media only screen and (min-width: 768px){
 	body > header
