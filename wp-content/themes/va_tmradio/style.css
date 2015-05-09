@@ -53,10 +53,8 @@ select
 {
 	margin-bottom: 1em;
 }
-.programa
-{
-	margin-bottom: 1em;
-}
+
+
 .date
 {
 	color: #cacac9;
@@ -192,35 +190,6 @@ select
 	background: gray;
 }
 
-.top-category a
-{
-	display: block;
-	height: 170px;
-	overflow: hidden;
-	position: relative;
-	width: 100%;
-}
-.top-category h2
-{
-	background: #98c01f;
-	bottom: 12px;
-	color: #fff;
-	font-size: 1em;
-	font-weight: bold;
-	margin: 0;
-	padding: 12px 10px;
-	position: absolute;
-	width: 90%;
-	z-index: 2;
-}
-.top-category img
-{
-	display: block;
-	margin-top: -50%;
-	position: relative;
-	top: 50%;
-	z-index: 1;
-}
 
 #emision
 {
@@ -337,6 +306,50 @@ select
 	height: 40px;
 	width: 50px;
 }
+
+.top-category .row .programa 
+{
+	margin-bottom: 3em;
+}
+
+
+.top-category .row .programa a
+{
+	display: block;
+	height: 170px;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.top-category .row .programa a h2
+{
+	width: 100%;
+	background: none repeat scroll 0 0 #98c01f;
+    bottom: 12px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    padding: 12px 10px;
+    position: absolute;
+    z-index: 2;
+}
+
+
+
+.top-category .row .programa a img
+{
+	display: block;
+	margin-top: -50%;
+	position: relative;
+	width: 100%;
+	max-height: 195px;
+	top: 50%;
+	z-index: 1;
+}
+
+
 #programacion .programa a
 {
 	color: #fff;
@@ -558,14 +571,67 @@ h2.resp-tab-active {
     display: block;
 }
 
+#primary 
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+}
+
 #primary .post{
 	margin-bottom: 40px;
-	max-height: 300px;
+	margin-left: 50px;
+	border-bottom: 2px dashed #fff;
+
+}
+
+#primary .post header {
+    padding: 20px 3px 0 0;
+    margin-bottom: 20px;
+    min-height: 260px;
 }
 
 #primary .post header a img{
-	max-height: 200px;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%
 }
+
+#primary .post section h2{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#primary .post section{
+   min-height: 320px;
+}
+
+
+#primary .post section .post-content
+{
+    overflow: hidden;
+}
+
+#primary .post .footer-content{
+    margin-top: 10px;
+
+}
+
+#primary .post .footer-content a{
+	width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    text-align: center;
+	background-color: #f07b0a;
+	color: #fff;
+	text-decoration: none;
+}
+
+
+#primary .post .footer-content a:hover{
+	background-color: #DE6202;
+}
+
 
 
 @media only screen and (min-width: 768px){

@@ -14,6 +14,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<footer id="footer" class="container">
 			<div class="row">
 				<p class="col-sm-4">También nos puedes escuchar en: <a href="http://tunein.com/radio/Telemedell%C3%ADn-Radio-s216062/" class="icono tunein" rel="nofollow" target="_blank">TuneIn</a> <a href="http://www.nobexpartners.com/ourwebplayer.aspx?id=38354" class="icono winamp" rel="nofollow" target="_blank">Winamp</a><a href="http://62.210.209.179:2199/tunein/telemedradio.pls" class="icono itunes" rel="nofollow" target="_blank">iTunes</a></p>

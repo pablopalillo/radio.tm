@@ -1,9 +1,9 @@
 <?php
 add_theme_support( 'post-thumbnails' ); 
-add_image_size( 'programa-thumb', 220, 170, array('top', 'center') );
-add_image_size( 'programa-interna', 655, 320 );
-add_theme_support( 'menus' );
-add_theme_support( 'post-formats', array('audio') );
+//add_image_size( 'programa-thumb', 220, 170, array('top', 'center') );
+//add_image_size( 'programa-interna', 655, 320 );*/
+//add_theme_support( 'menus' );
+//add_theme_support( 'post-formats', array('audio') );
 
 register_nav_menus(
 	array( 
