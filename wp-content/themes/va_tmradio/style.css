@@ -319,6 +319,11 @@ select
 	overflow: hidden;
 	position: relative;
 	width: 100%;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	background-position: center center;
+	transition: all ease 0.5s;
+	background-repeat: no-repeat;
 }
 
 .top-category .row .programa a h2
@@ -334,6 +339,9 @@ select
   position: absolute;
   z-index: 2;
 	transition: all ease 0.5s;
+}
+.top-category .row .programa a:hover{
+	background-size: 120%;
 }
 .top-category .row .programa a:hover h2{
 	background: rgba(152, 192, 31, 1);
