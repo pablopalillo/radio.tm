@@ -111,7 +111,8 @@ if($r)
 	    <div id="content">
 	    	<div id="programacion">
 	    		<span class="display-programacion">
-	    			<?php echo (!empty($current))?utf8_encode($current['name']):''; ?>
+                    <?php echo 'Aquí te escuchas' ?>
+	    			<?php //echo (!empty($current))?utf8_encode($current['name']):''; ?>
 	    		</span>
 	    	</div>
 			<div id="player">
@@ -123,7 +124,7 @@ if($r)
 			</div>
 		</div>
 		<script>
-		var programas 	= <?php echo json_encode($programas)?>,
+	/*	var programas 	= <?php echo json_encode($programas)?>,
 			current		= <?php echo (!empty($current))?json_encode($current):0?>,
 			dTime 		= new Date(),
    			hours 		= dTime.getHours(),
@@ -137,7 +138,7 @@ if($r)
 			console.log(c_hour);
 			if( ph > c_hour )
 				setchange(ph, e, i);
-		});
+		}); */
 		function setchange(ph, e, i)
 		{
 			TimeO[i] = setTimeout(change, ph, e, i);
@@ -145,10 +146,10 @@ if($r)
 		}
 		function change(e, i)
 		{
-			var pr = document.getElementById('programacion');
+			/*var pr = document.getElementById('programacion');
 			pr.innerHTML = e.name;
 			console.log('Change ' + e.name);
-			clearTimeOut(TimeO[i]);
+			clearTimeOut(TimeO[i]);*/
 		}
 		</script>
 		<script>

@@ -1,3 +1,4 @@
+<?php //wp_redirect( home_url().'/home-streaming' ); exit; ?>
 <?php get_header(); ?>
 <div id="primary" class="post col-sm-9 col-xs-12" role="main"> 
  	<?php 
@@ -12,7 +13,7 @@
 				 	<?php get_template_part( 'content-blog','2' ,get_post_format() ); ?>
 				<?php endif;?>				 
 			<?php endwhile; ?>	
-		<?php endif; ?>
+		<?php endif;  ?>
 </div>
 
 <?php get_footer(); ?>
