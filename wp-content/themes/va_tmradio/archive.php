@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 
 <?php  if( get_category_by_slug(single_cat_title("", false))->category_parent == 5 ): ?>
+
+<?php $catid = get_category_by_slug('programas')->term_id;  ?>
 <div class="col-sm-9 col-xs-12 inner-category">
 	<div id="main-content-home">	
 		<div class="category-info">
-			<h1><?php single_cat_title('', true)?></h1>
+			<h1><?php single_cat_title('', true)?>
+			</h1>
 			<?php if (function_exists('z_taxonomy_image_url')):?>
 			<p><img src="<?php echo z_taxonomy_image_url($category->cat_ID, 'programa-interna'); ?>" alt="<?php single_cat_title('', true)?>" /></p>
 			<?php endif; ?>
@@ -14,7 +17,7 @@
 		<form method="GET">
 			<label for="mes">Selecciona el mes: </label>
 			<div class="select-mask">
-				<select name="mes" id="mes" data-nonce="<?php echo $nonce ?>" data-catid="<?php echo $cat_id ?>">
+				<select name="mes" id="mes" data-nonce="<?php echo $nonce ?>" data-catid="<?php echo $catid ?>">
 					<option value="" SELECTED>Seleccione el mes</option>
 					<?php 
 					foreach($dates as $date): 

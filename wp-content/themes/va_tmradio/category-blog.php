@@ -12,6 +12,16 @@
 				 	<?php get_template_part( 'content-blog','2' ,get_post_format() ); ?>
 				<?php endif;?>				 
 			<?php endwhile; ?>	
+			
+			<div class="pag">
+				<?php
+				/* paginacion marca telemedellin */
+				if ( function_exists( 'bt_pagination' ) ) 
+				{
+					bt_pagination();
+				}
+				?>
+			</div>
 		<?php endif; ?>
 </div>
 

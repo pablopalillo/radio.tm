@@ -7,6 +7,7 @@ if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|c
 {
 	$version =  'pc';
 }/**/
+/*
 date_default_timezone_set('America/Bogota');
 $c_dow 		= date('N');
 $c_hour 	= date('H');
@@ -39,6 +40,7 @@ if($r)
 		$programas[] = $programa;
 	}
 }
+**/
 ?>
 <!doctype html>  
 <html lang="es">

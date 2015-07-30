@@ -643,6 +643,11 @@ h2.resp-tab-active {
 	background-color: #DE6202;
 }
 
+.pag {
+  clear: both;
+  display: block;
+}
+
 
 
 @media only screen and (min-width: 768px){
