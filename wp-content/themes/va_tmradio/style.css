@@ -48,11 +48,6 @@ select
 	z-index: 2;
 }
 
-.category-info
-{
-	margin-bottom: 1em;
-}
-
 
 .date
 {
@@ -162,15 +157,94 @@ select
 {
 	margin-top: 15px;
 }
+
+			/** ----------- PROGRAMAS -----------**/
+
+.programas-inner
+{
+	min-height: 600px;
+}
+
+.programas-inner .category-info
+{
+	margin-bottom: 5em;
+}
+
+.programas-inner .category-info h1
+{
+	text-align: center;
+}
+
+.programas-inner .category-info p
+{
+	text-align: justify;
+}
+
+.programas-inner #programas-seccion
+{
+	padding: 5px;
+	margin: 10px 15px 10px 10px;
+
+}
+
+.programas-inner #programas-seccion .titulo-programa-h3
+{
+	text-align: center;
+	background: #f07b0a none repeat scroll 0 0;
+    font-weight: bold;
+    margin: 0 0 10px;
+    padding: 5px;
+}
+
+.programas-inner #programas-seccion .programas-select
+{
+	border: 2px dashed;
+    height: 80px;
+    margin-left: 15px;
+    margin-top: 35px;
+    padding-top: 5px;
+    text-align: center;
+    width: 23%;
+}
+
+.programas-inner #programas-seccion .programas-select, 
+.programas-inner #programas-seccion .programas-select label
+{
+	display: block;
+}
+
+
+.programas-inner #programas-seccion #podcast-area .podcasts
+{
+	margin-top: 50px;
+}
+
+.programas-inner #programas-seccion #podcast-area .podcasts
+{
+	margin-top: 50px;
+}
+
+.programas-inner #programas-seccion #podcast-area .podcasts h3
+{
+	font-weight: bold;
+ 	margin: 0 0 10px;
+    padding: 13px;
+}
+
+.programas-inner #programas-seccion #podcast-area .podcasts .podcasts-content
+{
+	margin-top: 35px;
+}
+
+
+
 .select-mask
 {
    background: url(images/dropdown-arrow.png) no-repeat top right #fff;
    display: inline-block;
    height: 28px;
-   margin-right: 20px;
-   overflow: hidden;
-   vertical-align: middle;
 }
+
 .select-mask select
 {
    background: transparent;
@@ -190,10 +264,14 @@ select
 }
 
 
-#emision
-{
-	margin-top: 20px;
+.loading {
+  font-family: monospace;
+  font-size: 23px;
+  margin: 20px 0 0 14px;
 }
+
+
+
 #footer
 {
 	background: rgba(0, 0, 0, .50);

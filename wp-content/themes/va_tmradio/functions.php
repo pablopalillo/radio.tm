@@ -29,8 +29,8 @@ register_sidebar(array(
   'after_title' => '</h4>',
 ));
 
-add_action("wp_ajax_nopriv_get_posts_by_moy", "get_posts_by_moy");
-add_action("wp_ajax_get_posts_by_moy", "get_posts_by_moy");
+add_action("wp_ajax_nopriv_get_posts_by_mes", "get_posts_by_mes");
+add_action("wp_ajax_get_posts_by_mes", "get_posts_by_mes");
 
 add_action("wp_ajax_nopriv_get_podcast", "get_podcast");
 add_action("wp_ajax_get_podcast", "get_podcast");
@@ -38,19 +38,18 @@ add_action("wp_ajax_get_podcast", "get_podcast");
 add_action("wp_ajax_nopriv_get_images_background", "get_images_background");
 add_action("wp_ajax_get_images_background", "get_images_background");
 
-function get_posts_by_moy() 
+function get_posts_by_mes() 
 {
-	if ( !wp_verify_nonce( $_REQUEST['nonce'], "posts_moy_nonce")) {
-		exit("No naughty business please");
-	}
+
 	$posts = false;
 
-	if(isset($_REQUEST['moy']) && isset($_REQUEST['cat_id']))
+	if(isset($_REQUEST['mes']) && isset($_REQUEST['cat_id']))
 	{
-		$args = array('cat' => $_REQUEST['cat_id'], 'm' => $_REQUEST['moy']);
-	
+		$args = array('cat' => $_REQUEST['cat_id'], 'monthnum' =>  ( (int) $_REQUEST['mes'] ) + 1 ) ;
+		//$args = array('cat' => $_REQUEST['cat_id']);
 		$posts = get_posts( $args );
 	}
+
 	if($posts === false) 
 	{
 		$result['type'] = "error";
@@ -60,6 +59,7 @@ function get_posts_by_moy()
 		$result['type'] = "success";
 		$result['posts'] = $posts;
 	}
+
    
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 		echo json_encode($result);
@@ -129,6 +129,104 @@ function get_images_background()
 	die();
 
 }
+
+/**
+ * MenorPorCategoria
+ *
+ * funcion que permite segun la categoria mostrar
+ * la fecha mas antigua de publicacion de un post.
+ * de esa categoria 
+ * @param cat_id = categoria de wordpress
+ * @return date d/m/Y
+ * @author Pablo Martinez
+ **/
+
+function menorPorCategoria($cat_id)
+{
+	  $dateMenor = null; 
+	  $args 	 = array('cat'=>$cat_id, 'posts_per_page' => '-1' );
+	  $the_query = new WP_Query($args); 
+
+	  if ($the_query->have_posts())
+	  {
+	  	while ($the_query->have_posts()) : $the_query->the_post(); 
+	  		
+	  		if($dateMenor == null )
+	  		{
+	  			$dateMenor = get_the_date('d/m/Y');
+	  		}
+	  		else
+	  		{
+	  			if( strtotime(get_the_date('d/m/Y')) < strtotime($dateMenor)  )
+	  			{
+	  				$dateMenor = get_the_date('d/m/Y');
+	  			}
+	  		}
+
+	  	endwhile;
+	  }
+
+	  return $dateMenor;
+
+}
+
+
+/**
+ * SeletMeses
+ * Retorna un select de html 
+ * con los que hay antes del mes pasado por parametro.
+ *
+ * @return string (html)
+ * @param date d/m/Y
+ * @author Pablo Martinez
+ **/
+
+function selectMeses($fecha)
+{
+	if ( $fecha != null )
+	{
+		$contenido 	= '<select id="select-meses">';
+		$meses 		= array('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio',
+							'Agosto','Septiembre','Octubre','Noviembre','Diciembre');
+
+		try {
+
+			$mesFecha  = DateTime::createFromFormat('d/m/Y',$fecha);
+			$mesFecha  = $mesFecha->format('n');
+
+			if( $mesFecha >= 0 && $mesFecha <= 12)
+			{
+				$contenido .= '<option selected >Seleccione</option>';
+
+				if( $mesFecha > 1 )
+				{
+					for ($i = ( (int)$mesFecha - 1) ; $i < 12 ; $i ++ )
+					{
+			
+						$contenido .= '<option value="'.$i.'">'.$meses[$i].'</option>';
+					}
+				}
+
+				$contenido .= '</select>';
+				return $contenido;
+			}
+			else
+			{
+ 				throw new Exception('Mes no valido, posiblemente tenga el formato de fecha invalido.');
+			}
+
+		} catch (Exception $e) {
+
+			 echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+		}
+
+	}
+
+	return null;
+
+}
+
+
 
 /**
 * bt_pagination

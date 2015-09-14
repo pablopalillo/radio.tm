@@ -42,43 +42,54 @@ jQuery(document).ready(function(){
 
 	jQuery('#programacion').easyResponsiveTabs();
 	
-	jQuery('#mes').change(function(){
+	jQuery('#select-meses').change(function(){
 		var t 		= jQuery(this),
-			p 		= jQuery("#programa"), 
-			cat_id 	= t.attr("data-catid"), 
-			nonce 	= t.attr("data-nonce"),
-			moy 	= t.val();
+			mes 	= t.val();
 
-		if(moy != '')
+		var area    = jQuery("#podcast-area");
+			cat_id 	= area.attr("cat");
+
+		if(mes != '')
 		{
 			jQuery.ajax({
 				url: 		myAjax.ajaxurl,
 				type: 		"post",
 				dataType: 	"json",
 				data: {
-					action: "get_posts_by_moy", 
+					action: "get_posts_by_mes", 
 					cat_id: cat_id, 
-					moy: moy, 
-					nonce: nonce
+					mes:  mes , 
 				},
 				beforeSend: function(){
-					p.html(new Option('Cargando podcasts...', '')).attr('disabled', 'disabled'); 
+					area.html('<div class="loading">Cargando podcasts...</div>'); 
 				}, 
 				success: function(response) {
-					p.html('');
-
+					area.html('');
+					console.log(response);
 					if(response.type == "success") {
-						p.append(new Option('Selecciona el podcast', ''));
-						jQuery.each(response.posts, function(i, e){
-							p.append(new Option(e.post_title, e.ID))
-						});
-						p.removeAttr('disabled');
+
+						if( response.posts.length > 0)
+						{
+							jQuery.each(response.posts, function(i, e){
+							area.append('<div class="podcasts"><h3>'+e.post_title+'</h3>'
+										+'<div class="podcasts-content">'+e.post_content+'</div></div>');	
+							});
+						}
+						else
+						{
+							area.html('<div class="loading">No hay programas para este mes.</div>'); 
+						}
+
+
+						
 					}
 					else {
+
 					   alert("Error");
 					}
-					p.append(new Option('Ver mes', 'nah'));
+
 				}
+
 			}); 
 		}
 		  
