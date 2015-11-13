@@ -8,7 +8,7 @@
 		</figure>
 	</header>
 	<section class="col-md-12">
-		<h2 class="title-article"> <?php echo get_the_title() ?> </h2>
+		<h2 class="title-article2"> <?php echo get_the_title() ?> </h2>
 		<div class="post-content">
 			<?php
 					/**
