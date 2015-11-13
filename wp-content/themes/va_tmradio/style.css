@@ -207,7 +207,7 @@ select
     width: 23%;
 }
 
-.programas-inner #programas-seccion .programas-select, 
+.programas-inner #programas-seccion .programas-select,
 .programas-inner #programas-seccion .programas-select label
 {
 	display: block;
@@ -743,10 +743,21 @@ h2.resp-tab-active {
     min-height: 260px;
 }
 
-#primary .post header a img{
+
+#primary .post header .imagen-article a img{
 	max-width: 100%;
 	max-height: 100%;
-	width: 100%
+	width: 100%;
+}
+
+#primary .post header .image-article2 {
+ 	position: absolute;
+}
+
+#primary .post header .image-article2 a img{
+  max-height: 250px;
+	max-width: 100%;
+	width: 97%;
 }
 
 #primary .post section h2{

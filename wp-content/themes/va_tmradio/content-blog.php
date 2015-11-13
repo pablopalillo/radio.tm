@@ -2,7 +2,7 @@
 	<header class="col-md-8">
 		<figure class="image-article">
 			<a href="<?php esc_url(the_permalink()) ?>" >
-				<?php the_post_thumbnail('thumbnail') ?>
+				<?php the_post_thumbnail('medium') ?>
 			</a>
 		</figure>
 	</header>
@@ -21,7 +21,7 @@
 					else
 					{
 						echo get_the_content('');
-					} 
+					}
 				?>
 			</div>
 			<footer class="footer-content">

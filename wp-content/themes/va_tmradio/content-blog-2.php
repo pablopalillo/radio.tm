@@ -3,7 +3,7 @@
 		<!-- <time><?php echo get_the_date() ?></time> -->
 		<figure class="image-article">
 			<a href="<?php esc_url(the_permalink()) ?>" >
-				<?php the_post_thumbnail('full') ?>
+				<?php the_post_thumbnail('thumbnail') ?>
 			</a>
 		</figure>
 	</header>
@@ -22,7 +22,7 @@
 					else
 					{
 						echo get_the_content('');
-					} 
+					}
 					?>
 		</div>
 		<footer class="footer-content">
