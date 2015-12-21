@@ -119,9 +119,9 @@ if($r)
 	    	</div>
 			<div id="player">
 			<?php if($version == 'pc'): ?>
-				<video controls="" autoplay="" name="media"><source src="http://62.210.209.179:8056/stream" type="audio/mpeg"></video>
+				<audio controls="" autoplay="" name="media"><source src="http://62.210.209.179:8056/stream" type="audio/mpeg"></video>
 			<?php else: ?>
-				<video controls="" autoplay="" name="media"><source src="http://62.210.209.179:8056/stream" type="audio/mpeg"></video>
+				<audio controls="" autoplay="" name="media"><source src="http://62.210.209.179:8056/stream" type="audio/mpeg"></video>
 			<?php endif; ?>
 			</div>
 		</div>
