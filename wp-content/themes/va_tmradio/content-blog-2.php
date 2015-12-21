@@ -1,14 +1,14 @@
 <article id="post-<?php the_ID(); ?>" role="article" class="post col-md-5">
 	<header class="col-md-12">
 		<!-- <time><?php echo get_the_date() ?></time> -->
-		<figure class="image-article">
+		<figure class="image-article2">
 			<a href="<?php esc_url(the_permalink()) ?>" >
 				<?php the_post_thumbnail('thumbnail') ?>
 			</a>
 		</figure>
 	</header>
 	<section class="col-md-12">
-		<h2 class="title-article2"> <?php echo get_the_title() ?> </h2>
+		<h2 class="title-article"> <?php echo get_the_title() ?> </h2>
 		<div class="post-content">
 			<?php
 					/**
