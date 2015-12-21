@@ -737,9 +737,10 @@ h2.resp-tab-active {
 
 }
 
-#primary .post:first-child{
-	margin-left: 0px;
+#primary .post:first-child {
+    margin-left: 0;
 }
+
 
 
 #primary .post header {
